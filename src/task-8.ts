@@ -1,22 +1,18 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
-/**
- * Interface representing the structure of a Post from the API.
- */
 interface Post {
-  userId: number;
   id: number;
   title: string;
   body: string;
 }
 
-async function fetchPosts(): Promise<Post[]> {
-  const response: AxiosResponse<Post[]> = await axios.get<Post[]>(
+const fetchPosts = async (): Promise<Post[]> => {
+  const response = await axios.get<Post[]>(
     'https://jsonplaceholder.typicode.com/posts'
   );
   return response.data;
 }
 
-fetchPosts().then((posts: Post[]) => {
+fetchPosts().then((posts) => {
   console.log(posts[0].title);
 });
