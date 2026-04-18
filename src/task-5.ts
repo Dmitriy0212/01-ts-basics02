@@ -1,11 +1,12 @@
-function logStatus(status: "loading" | "success" | "error"): void {
-  if (status === "loading") {
-    console.log("Loading...");
-  } else if (status === "success") {
-    console.log("Success!");
-  } else if (status === "error") {
-    console.log("Something went wrong");
-  }
+function createUser({ name, age }: { name: string; age: number }): {
+  name: string;
+  age: number;
+  isAdmin: boolean;
+} {
+  return {
+    name,
+    age,
+    isAdmin: false,
+  };
 }
-
-logStatus("loading");
+console.log(createUser({ name: "Иван", age: 30 }));

@@ -1,7 +1,12 @@
-function getFirstElement<T>(arr: T[]): T {
-  return arr[0];
-}
+type User = {
+  name: string;
+  address?: {
+    city: string;
+  };
+};
 
-getFirstElement([1, 2, 3]);           // 1
-getFirstElement(["a", "b", "c"]);     // "a"
-getFirstElement([true, false, true]); // true
+const user: User = {
+  name: "Alice",
+};
+
+console.log(user);

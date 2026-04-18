@@ -1,9 +1,12 @@
-function getMessage(): Promise<string> {
-  return new Promise<string>((resolve) => {
-    setTimeout(() => {
-      resolve("Hello from TS");
-    }, 1000);
-  });
+interface User {
+  name: string;
+  age: number;
 }
 
-getMessage().then((result: string) => console.log(result));
+const users: User[] = [
+  { name: "Alice", age: 30 },
+  { name: "Bob", age: 25 },
+];
+
+users.push({ name: "Charlie", age: 28 });
+console.log(users);

@@ -1,18 +1,17 @@
-import axios from "axios";
-
-interface Post {
-  id: number;
-  title: string;
-  body: string;
+enum Role {
+  Admin,
+  User,
+  Guest,
 }
 
-const fetchPosts = async (): Promise<Post[]> => {
-  const response = await axios.get<Post[]>(
-    'https://jsonplaceholder.typicode.com/posts'
-  );
-  return response.data;
+function getPermissions(role: Role): string[] {
+  switch (role) {
+    case Role.Admin:
+      return ["create", "read", "update", "delete"];
+    case Role.User:
+      return ["read", "update"];
+    case Role.Guest:
+      return ["read"];
+  }
 }
-
-fetchPosts().then((posts) => {
-  console.log(posts[0].title);
-});
+console.log(getPermissions(Role.Admin));
